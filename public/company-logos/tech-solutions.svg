@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#gradient)" opacity="0.9"/>
+  
+  <!-- Tech Icon -->
+  <path d="M65 80V120M85 70V130M105 60V140M125 70V130M135 80V120" 
+        stroke="#64FFDA" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Outer Ring -->
+  <circle cx="100" cy="100" r="85" stroke="#64FFDA" stroke-width="2" stroke-opacity="0.5"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0A192F"/>
+      <stop offset="100%" stop-color="#112240"/>
+    </linearGradient>
+  </defs>
+</svg>
