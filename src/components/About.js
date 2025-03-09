@@ -68,6 +68,28 @@ const DownloadButton = styled(motion.a)`
   }
 `;
 
+const DropdownArrow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  
+  &::after {
+    content: '';
+    border: solid var(--accent-color);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
 const About = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -94,11 +116,14 @@ const About = () => {
 
   return (
     <AboutSection id="about">
-      <Container>
+      <Container
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         <SectionTitle
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
           variants={containerVariants}
         >
           About Me
@@ -106,8 +131,7 @@ const About = () => {
         <AboutContent>
           <AboutText
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            animate="visible"
             variants={textVariants}
           >
             <p>
@@ -117,8 +141,8 @@ const About = () => {
             </p>
             <DownloadButton
               href="/resume.pdf"
-              target="_blank"
               rel="noopener noreferrer"
+              download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
