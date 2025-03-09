@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ErrorBoundary from './components/ErrorBoundary';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { BrowserRouter } from 'react-router-dom';
 
 config.autoAddCss = false;
 
@@ -117,22 +118,67 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+      <GlobalStyle />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <LoadingScreen
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <LoadingIndicator
+              animate={{
+                rotate: 360
+              }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                ease: 'linear'
+              }}
+            />
+            <LoadingText
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Loading amazing content...
+            </LoadingText>
+          </LoadingScreen>
+        ) : (
+          <AppContainer
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
+          >
+            <Suspense fallback={
+              <LoadingScreen>
+                <LoadingIndicator
+                  animate={{
+                    rotate: 360
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: 'linear'
+                  }}
+                />
+              </LoadingScreen>
+            }>
+              <Navbar />
+              <Hero />
+              <About />
+              <Skills />
+              <Projects />
+              <Experience />
+              <Contact />
+            </Suspense>
+          </AppContainer>
+        )}
+      </AnimatePresence>
+    </ErrorBoundary>
   );
 }
 
