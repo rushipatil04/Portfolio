@@ -143,7 +143,7 @@ const About = () => {
             <DownloadButton
               href="/resume.pdf"
               rel="noopener noreferrer"
-              download
+              download="resume.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
