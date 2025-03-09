@@ -75,6 +75,7 @@ const DropdownArrow = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  margin: 0 auto;
   
   &::after {
     content: '';
