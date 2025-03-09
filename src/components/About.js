@@ -123,17 +123,17 @@ const About = () => {
         variants={containerVariants}
       >
         <SectionTitle
+          variants={containerVariants}
           initial="hidden"
           animate="visible"
-          variants={containerVariants}
         >
           About Me
         </SectionTitle>
         <AboutContent>
           <AboutText
+            variants={textVariants}
             initial="hidden"
             animate="visible"
-            variants={textVariants}
           >
             <p>
               I am a passionate Software Test Engineer with hands-on experience in manual testing, 
